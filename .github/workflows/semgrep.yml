@@ -6,7 +6,7 @@ name: sast
   # You can choose any combination of triggers below,
   # but make sure to include at least an option to run manually
 on:
-  push: # Trigger on push events
+  # push: # Trigger on push events
   workflow_dispatch: # Trigger manually via GitHub UI
   workflow_call: # Triggered by other workflows
   pull_request: # Trigger on pull requests
@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v3 # Options: actions/checkout@v3 | actions/setup-node@v3 | docker/setup-buildx-action@v2
         # Hint: Checkout is needed so that semgrep can access your repo code
       - name: scan # Options: choose any name you want. This step scans our code.
-        run: semgrep scan --sarif --sarif-output=semgrep.sarif || true # Options:
+        run: semgrep scan --sarif --sarif-output=semgrep.sarif --error # Options:
                             # semgrep scan --sarif --sarif-output=semgrep.sarif --error (blocking)
                             # semgrep scan --sarif --sarif-output=semgrep.sarif || true (non-blocking)
         # Hint: Blocking mode stops workflow on issues; non-blocking continues
