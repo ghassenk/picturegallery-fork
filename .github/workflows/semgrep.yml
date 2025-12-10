@@ -1,3 +1,5 @@
+# GK : nous allons utiliser semgrep pour la partie SAST
+
 # Step 1: Define workflow name.
 name: ______________
 # Step 2:
